@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Compliance Dashboard | DNT Consultancy</title>
+  <meta name="description" content="DNT's proprietary AI Compliance Dashboard – real-time GST, TDS, ROC deadline alerts, document management and business analytics in one place." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .dash-stat {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s var(--ease-apple);
+    }
+    .dash-stat:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .dash-stat-num {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<nav id="main-nav" aria-label="Main Navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">DN</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Digital Next</span>
+          <span class="nav-logo-sub">Consultancy</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link" data-path="/index.html">Home</a>
+        <div class="nav-services-wrap">
+          <button class="nav-services-btn">
+            Services
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="services-dropdown">
+            <div class="services-dropdown-grid">
+              <div class="services-col gold">
+                <a href="services/compliance.html" class="services-col-title">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Statutory & Compliance
+                </a>
+                <ul>
+                  <li><a href="services/compliance.html#formation">Company Formation</a></li>
+                  <li><a href="services/compliance.html#gst">GST Registration & Filing</a></li>
+                  <li><a href="services/compliance.html#itr">ITR Filing</a></li>
+                  <li><a href="services/compliance.html#tds">TDS/TCS Filing</a></li>
+                  <li><a href="services/compliance.html#roc">ROC/MCA Filings</a></li>
+                </ul>
+              </div>
+              <div class="services-col blue">
+                <a href="services/digital-marketing.html" class="services-col-title">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  Digital Marketing
+                </a>
+                <ul>
+                  <li><a href="services/digital-marketing.html#web">Website Development</a></li>
+                  <li><a href="services/digital-marketing.html#seo">SEO Services</a></li>
+                  <li><a href="services/digital-marketing.html#ads">Paid Advertising</a></li>
+                  <li><a href="services/digital-marketing.html#smm">Social Media Marketing</a></li>
+                  <li><a href="services/digital-marketing.html#content">Content Marketing</a></li>
+                </ul>
+              </div>
+              <div class="services-col green">
+                <a href="services/technology.html" class="services-col-title">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="14" x2="22" y2="14"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="14" x2="4" y2="14"/></svg>
+                  IT & Technology
+                </a>
+                <ul>
+                  <li><a href="services/technology.html#erp">ERP Implementation</a></li>
+                  <li><a href="services/technology.html#crm">CRM Integration</a></li>
+                  <li><a href="services/technology.html#automation">Process Automation</a></li>
+                  <li><a href="services/technology.html#dashboard">AI Compliance Dashboard</a></li>
+                  <li><a href="services/technology.html#cloud">Cloud Migration</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="services-dropdown-footer">
+              <a href="dashboard.html">Explore Our AI Compliance Dashboard</a>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link" data-path="/about.html">About Us</a>
+        <a href="packages.html" class="nav-link" data-path="/packages.html">Packages</a>
+        <a href="blog.html" class="nav-link" data-path="/blog.html">Blog</a>
+        <a href="contact.html" class="nav-link" data-path="/contact.html">Contact</a>
+        </div>
+
+      <a href="contact.html" class="nav-cta-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 8.81 19.79 19.79 0 011.61 2.18 2 2 0 013.6 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.18 6.18l.95-.95a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Free Consultation
+      </a>
+
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+        <svg id="menu-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="menu-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <button class="mobile-services-btn" id="mobile-services-btn">
+      Services
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div id="mobile-services-sub">
+      <a href="services/compliance.html" class="mobile-sub-link">Statutory & Compliance</a>
+      <a href="services/digital-marketing.html" class="mobile-sub-link">Digital Marketing</a>
+      <a href="services/technology.html" class="mobile-sub-link">IT & Technology</a>
+    </div>
+    <a href="about.html" class="mobile-nav-link">About Us</a>
+    <a href="packages.html" class="mobile-nav-link">Packages</a>
+    <a href="blog.html" class="mobile-nav-link">Blog</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
+    <a href="contact.html" class="mobile-cta-btn">Get Free Consultation</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="silk-overlay"></div>
+  <div class="container relative z-3">
+    <div class="hero-content text-center">
+      <span class="overline reveal">✦ Proprietary Technology</span>
+      <h1 class="gradient-text reveal">AI Compliance Dashboard</h1>
+      <p class="hero-sub reveal" style="margin:1.25rem auto 2.5rem">India's first AI-powered compliance management platform. Never miss a deadline. Track all filings. Get real-time alerts — all in one place.</p>
+      <div class="hero-btns animate-stagger" style="justify-content:center">
+        <a href="contact.html" class="btn btn-gold btn-lg btn-shine">Request Demo →</a>
+        <a href="packages.html" class="btn btn-ghost btn-lg">View Packages</a>
+      </div>
+      
+      <div class="grid-4 animate-stagger" style="margin-top:5rem">
+        <div class="dash-stat reveal">
+          <div class="dash-stat-num text-gold">500+</div>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.85rem">Deadlines Tracked</p>
+        </div>
+        <div class="dash-stat reveal">
+          <div class="dash-stat-num text-gold">99%</div>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.85rem">Accuracy Rate</p>
+        </div>
+        <div class="dash-stat reveal">
+          <div class="dash-stat-num text-gold">40+</div>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.85rem">Active Users</p>
+        </div>
+        <div class="dash-stat reveal">
+          <div class="dash-stat-num text-gold">24/7</div>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.85rem">Monitoring</p>
+          <div class="dash-stat-num">500+</div>
+          <p>Deadlines Tracked</p>
+        </div>
+        <div class="dash-stat reveal">
+          <div class="dash-stat-num">99%</div>
+          <p>Accuracy Rate</p>
+        </div>
+        <div class="dash-stat reveal">
+          <div class="dash-stat-num">40+</div>
+          <p>Active Users</p>
+        </div>
+        <div class="dash-stat reveal">
+          <div class="dash-stat-num">24/7</div>
+          <p>Monitoring</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI AGENTS -->
+<section class="section bg-light" id="agents">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="overline">Dashboard Features</span>
+      <h2 class="section-title">The Power of AI Compliance</h2>
+    </div>
+    <div class="grid-3 animate-stagger">
+      <div class="flip-card reveal">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-icon card-icon-gold"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <h4 class="card-title">Smart Calendar</h4>
+            <div class="flip-card-hint">Hover to see more</div>
+          </div>
+          <div class="flip-card-back">
+            <p class="card-text">Automated deadline tracking for GST, TDS, ROC, and ITR. Smart reminders at 30, 15, and 7 days.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card reveal">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-icon card-icon-blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <h4 class="card-title">Health Score</h4>
+            <div class="flip-card-hint">Hover to see more</div>
+          </div>
+          <div class="flip-card-back">
+            <p class="card-text">Real-time measurement of your regulatory standing. Instantly flags risk areas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <div class="card-body">
+          <div class="card-icon card-icon-green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <h3 class="card-title">Compliance Health</h3>
+          <p class="card-text">Automated tracking of GST, ROC, and ITR filing status with proactive deadline alerts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD INSIGHTS -->
+<section class="section bg-white" id="insights">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="overline">AI Dashboard</span>
+      <h2 class="section-title">Your Business Compliance at a Glance</h2>
+      <p class="section-subtitle">Real-time tracking of GST deadlines, SEO performance, and automation health for our retainer clients.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal reveal-delay-1">
+        <div class="card-body">
+          <div class="card-icon card-icon-gold"><span style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:700">1</span></div>
+          <h4 class="card-title" style="margin-bottom:.75rem">Subscribe to a Plan</h4>
+          <p class="card-text">Choose Growth Accelerator or Enterprise plan to get dashboard access included.</p>
+        </div>
+      </div>
+      <article class="card reveal reveal-delay-1">
+        <div class="card-body">
+          <div class="blog-meta"><span class="badge badge-gold">Compliance</span> • 5 min read</div>
+          <h3 class="card-title" style="font-size:1.2rem;margin:.75rem 0">Mastering GST for E-commerce</h3>
+          <p class="card-text">Complete guide to GST registration and filing requirements for selling online in India.</p>
+          <a href="blog-post.html" class="card-link" style="margin-top:1.5rem">Read Guide →</a>
+        </div>
+      </article>
+      <div class="card reveal reveal-delay-3">
+        <div class="card-body">
+          <div class="card-icon card-icon-green"><span style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:700">3</span></div>
+          <h4 class="card-title" style="margin-bottom:.75rem">Stay Compliant</h4>
+          <p class="card-text">Receive alerts, track deadlines, and monitor your compliance health score in real time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FINAL CTA (LOCKED DARK) ======================== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--text-primary)">Ready for Total Visibility?</h2>
+      <p style="font-size:1.1rem;margin:1.5rem auto 2.5rem;max-width:600px;color:rgba(255,255,255,0.7)">Experience the power of real-time business health tracking. Let's build your custom dashboard today.</p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn btn-gold btn-lg">Request Demo Dashboard →</a>
+        <a href="tel:+918130035039" class="btn btn-outline btn-lg">Talk to an Expert</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-icon">DN</div>
+        <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:0.25rem;color:var(--text-primary)">Digital Next</div>
+        <div style="font-family:'Outfit',sans-serif;font-weight:500;font-size:0.85rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.5rem">Consultancy Pvt. Ltd.</div>
+        <p class="footer-desc">Where Compliance Meets Digital Excellence. India's first CA + IT single platform for complete business growth.</p>
+        <a href="tel:+918130035039" class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 8.81 19.79 19.79 0 011.61 2.18 2 2 0 013.6 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.18 6.18l.95-.95a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          +91 8130035039
+        </a>
+        <a href="mailto:hello@dntconsultancy.in" class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          hello@dntconsultancy.in
+        </a>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          New Delhi, India
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title gold">Compliance Services</h4>
+        <ul class="footer-links">
+          <li><a href="services/compliance.html#formation">Company Formation</a></li>
+          <li><a href="services/compliance.html#gst">GST Registration</a></li>
+          <li><a href="services/compliance.html#itr">ITR Filing</a></li>
+          <li><a href="services/compliance.html#tds">TDS/TCS Returns</a></li>
+          <li><a href="services/compliance.html#roc">ROC/MCA Filings</a></li>
+          <li><a href="services/compliance.html#trademark">Trademark Registration</a></li>
+          <li><a href="services/compliance.html#iso">ISO Certifications</a></li>
+          <li><a href="services/compliance.html#cfo">Virtual CFO</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title blue">Digital &amp; IT Services</h4>
+        <ul class="footer-links blue">
+          <li><a href="services/digital-marketing.html#web">Website Development</a></li>
+          <li><a href="services/digital-marketing.html#seo">SEO Services</a></li>
+          <li><a href="services/digital-marketing.html#ads">Google/Meta Ads</a></li>
+          <li><a href="services/digital-marketing.html#smm">Social Media Marketing</a></li>
+          <li><a href="services/digital-marketing.html#content">Content Marketing</a></li>
+          <li><a href="services/technology.html#erp">ERP Implementation</a></li>
+          <li><a href="services/technology.html#crm">CRM Integration</a></li>
+          <li><a href="services/technology.html#automation">Process Automation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title green">Company</h4>
+        <ul class="footer-links green">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="dashboard.html">Our Dashboard</a></li>
+          <li><a href="packages.html">Packages &amp; Pricing</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Digital Next Consultancy Pvt. Ltd. All Rights Reserved. | <a href="privacy.html" style="color:inherit;text-decoration:underline">Privacy Policy</a> | <a href="terms.html" style="color:inherit;text-decoration:underline">Terms of Service</a></p>
+      <div class="footer-socials">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0D1B3E"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="whatsapp-btn" href="https://wa.me/918130035039?text=Hi!%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div id="cookie-consent" role="alert">
+  <div class="cookie-icon">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+  </div>
+  <div>
+    <p style="font-family:'Outfit',sans-serif;font-weight:600;font-size:.95rem;margin-bottom:.4rem">We value your privacy</p>
+    <p style="font-size:.82rem;color:var(--text-muted);line-height:1.5">We use cookies to enhance your browsing experience and analyze our traffic.</p>
+    <div class="cookie-btns">
+      <button class="cookie-accept" id="cookie-accept">Accept All</button>
+      <button class="cookie-decline" id="cookie-decline">Decline</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
