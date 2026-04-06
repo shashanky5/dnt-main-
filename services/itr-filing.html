@@ -10,123 +10,408 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    /* ITR PAGE PREMIUM LIGHT REFINEMENTS */
+    /* ITR PAGE PREMIUM LIGHT REFINEMENTS - SCALED 30% */
     :root {
       --itr-gold: #f59e0b;
+      --itr-beige-gold: #FBF8F3; /* Sophisticated Cream-Gold Base */
       --itr-navy: #050811;
       --itr-light-bg: #FFFFFF;
       --itr-grey-bg: #F8FAFC;
       --itr-border: #E2E8F0;
       --itr-text: #0F172A;
       --itr-muted: #64748B;
+      --itr-accent: rgba(245, 158, 11, 0.1);
     }
 
     body {
       background-color: var(--itr-light-bg);
       color: var(--itr-text);
       font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem; /* Reduced by ~8% globally for compact feel */
     }
 
-    .itr-section { padding: 5rem 0; }
+    .itr-section { padding: 3.5rem 0; } /* Reduced from 5rem */
 
-    /* Hero Refinement - Premium Light */
+    /* Hero Refinement - Centered Elite Space (Scaled) */
     .itr-hero {
-      padding: 160px 0 100px;
-      background: radial-gradient(circle at 15% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
-                  radial-gradient(circle at 85% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 40%),
+      padding: 125px 0 85px; /* Reduced from 180px/120px */
+      text-align: center;
+      background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.04) 0%, transparent 60%),
                   var(--itr-grey-bg);
       border-bottom: 1px solid var(--itr-border);
+    }
+    
+    .itr-hero .container {
+      max-width: 800px; /* Reduced for tighter focus */
+      margin: 0 auto;
     }
 
     .text-gold { color: var(--itr-gold); }
 
+    .itr-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.75rem); /* Reduced from 3.75rem */
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .itr-hero .section-subtitle {
+      font-size: 0.95rem; /* Reduced from 1.05rem */
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+      text-align: center;
+      color: var(--itr-muted);
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .hero-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 0.88rem; /* Reduced from 0.95rem */
+    }
+
     .itr-lead-card {
       background: #FFFFFF;
       border: 1px solid var(--itr-border);
-      border-radius: 28px;
-      padding: 2.5rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      border-radius: 22px; /* Reduced from 28px */
+      padding: 2rem; /* Reduced from 2.5rem */
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+      max-width: 440px;
+      margin: 0 auto;
+      text-align: left;
     }
 
-    .itr-lead-card h3 { font-family: 'Playfair Display', serif; color: var(--itr-text); margin-bottom: 0.5rem; }
-    .itr-lead-card p { color: var(--itr-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    /* Mandatory Grid - 8 Card Layout */
+    .mandatory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    
+    .mandatory-card {
+      background: #FFFFFF;
+      border: 1px solid var(--itr-border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .mandatory-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+      border-color: var(--itr-gold);
+    }
 
-    .itr-form-group { margin-bottom: 1.25rem; }
-    .itr-form-group input, .itr-form-group select {
-      width: 100%;
-      background: #F1F5F9;
-      border: 1px solid #E2E8F0;
+    .m-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 12px;
-      padding: 1rem;
-      color: var(--itr-text);
-      font-size: 0.95rem;
+      font-size: 1.25rem;
     }
-    .itr-form-group input:focus { border-color: var(--itr-gold); outline: none; background: #FFFFFF; }
 
-    /* Match Home Page Grid-3 & Card System */
-    .grid-itr {
+    .mandatory-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      color: var(--itr-navy);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .mandatory-card p {
+      font-size: 0.82rem;
+      color: var(--itr-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .itr-tag {
+      display: inline-flex;
+      padding: 0.35rem 0.75rem;
+      background: #050811;
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      font-weight: 700;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      align-self: flex-start;
+    }
+
+    /* Tab Design Harmony - Refined & Scaled */
+    .itr-tabs-header {
+      display: flex; gap: 0.4rem;
+      overflow-x: auto; scrollbar-width: none;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--itr-border);
+      justify-content: flex-start;
+    }
+    @media (min-width: 1024px) { .itr-tabs-header { justify-content: center; } }
+
+    .tab-btn {
+      background: #F1F5F9;
+      border: 1px solid var(--itr-border);
+      color: var(--itr-muted);
+      padding: 0.5rem 1rem; /* Reduced from 0.6/1.25 */
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.82rem; /* Reduced from 0.88rem */
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: var(--itr-navy);
+      color: #FFFFFF;
+      border-color: var(--itr-navy);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    .tab-pane { display: none; margin-top: 2.5rem; animation: slideUp 0.4s ease; }
+    .tab-pane.active { display: block; }
+
+    /* Deadlines Section (Scaled) */
+    .deadline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    
+    .deadline-card {
+      background: #FFFFFF;
+      border: 1px solid var(--itr-border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      position: relative;
+      border-left: 3px solid var(--itr-border);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: 1;
+    }
+    
+    .deadline-card::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 10%;
+      width: 80%; height: 10px;
+      z-index: -1;
+      opacity: 0;
+      filter: blur(8px);
+      transition: all 0.5s ease;
+    }
+    
+    /* Specific Category Styles */
+    .deadline-card.red { border-left-color: #EF4444; }
+    .deadline-card.red::after { background: radial-gradient(ellipse at center, #EF4444 0%, transparent 75%); }
+    .deadline-card.red:hover { border-color: #EF4444; box-shadow: 0 15px 30px rgba(239, 68, 68, 0.12); }
+
+    .deadline-card.navy { border-left-color: var(--itr-navy); }
+    .deadline-card.navy::after { background: radial-gradient(ellipse at center, var(--itr-navy) 0%, transparent 75%); }
+    .deadline-card.navy:hover { border-color: var(--itr-navy); box-shadow: 0 15px 30px rgba(5, 8, 17, 0.12); }
+
+    .deadline-card.green { border-left-color: #10B981; }
+    .deadline-card.green::after { background: radial-gradient(ellipse at center, #10B981 0%, transparent 75%); }
+    .deadline-card.green:hover { border-color: #10B981; box-shadow: 0 15px 30px rgba(16, 185, 129, 0.12); }
+
+    .deadline-card:hover { transform: translateY(-6px); }
+    .deadline-card:hover::after { opacity: 0.8; bottom: -10px; transform: scale(1.15); }
+
+    .deadline-month { font-size: 0.65rem; font-weight: 700; color: var(--itr-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .deadline-day { font-size: 1.75rem; font-weight: 800; color: var(--itr-navy); line-height: 1.2; margin: 0.4rem 0; }
+    .deadline-title { font-size: 0.8rem; font-weight: 700; color: var(--itr-navy); margin-bottom: 0.4rem; }
+    .deadline-desc { font-size: 0.75rem; color: var(--itr-muted); line-height: 1.5; margin-bottom: 1.1rem; }
+    
+    .deadline-tag {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .deadline-tag.red { background: #FEF2F2; color: #DC2626; }
+    .deadline-tag.gold { background: #FFFBEB; color: #D97706; }
+    .deadline-tag.navy { background: #F8FAFC; color: var(--itr-navy); }
+    .deadline-tag.green { background: #ECFDF5; color: #059669; }
+
+    /* Pricing Section Styles (Scaled & Beige Pivot) */
+    .pricing-grid-itr {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
+      margin-top: 3rem;
+      align-items: stretch;
     }
-
-    /* Light Card Refinement */
-    .card.tilt-card {
-      background: #FFFFFF !important;
-      border: 1px solid var(--itr-border) !important;
-      border-radius: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04) !important;
-      transition: all 0.4s var(--ease-apple);
-    }
-    .card.tilt-card:hover {
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
-      border-color: var(--itr-gold) !important;
-      transform: translateY(-8px) !important;
-    }
-
-    .itr-card-icon {
-      width: 54px; height: 54px;
-      background: rgba(245, 158, 11, 0.1);
-      color: var(--itr-gold);
-      border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.5rem;
-      font-size: 1.2rem;
-    }
-
-    /* Tab Design Harmony - Light */
-    .itr-tabs-header {
-      display: flex; gap: 0.75rem;
-      overflow-x: auto; scrollbar-width: none;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid #F1F5F9;
-    }
-    .tab-btn {
-      background: transparent;
-      border: none;
-      color: var(--itr-muted);
-      padding: 0.75rem 1.5rem;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .tab-btn.active {
-      background: var(--itr-gold);
-      color: #000;
-      box-shadow: 0 8px 20px rgba(245,158,11,0.2);
-    }
-
-    .tab-pane { display: none; margin-top: 3rem; animation: slideUp 0.5s ease; }
-    .tab-pane.active { display: block; }
-
-    .itr-detail-card {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    
+    .price-card {
       background: #FFFFFF;
       border: 1px solid var(--itr-border);
-      border-radius: 32px;
-      padding: 3rem;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    
+    .price-card.popular {
+      background: var(--itr-beige-gold); /* Beige Pivot */
+      color: var(--itr-navy); /* Text Darkened */
+      border: 1px solid #E5E0D5;
+      transform: scale(1.03); /* Reduced scale */
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      z-index: 2;
+    }
+    
+    .popular-badge {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--itr-gold);
+      color: #000;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .price-header { margin-bottom: 1.5rem; }
+    .price-cat { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.2rem; font-family: 'Playfair Display', serif; }
+    .price-sub { font-size: 0.8rem; color: var(--itr-muted); }
+    .price-card.popular .price-sub { color: var(--itr-muted); }
+
+    .price-value { font-size: 2.1rem; font-weight: 800; margin: 1.2rem 0; font-family: 'Playfair Display', serif; }
+    .price-value span { font-size: 0.82rem; }
+
+    .price-features { list-style: none; padding: 0; margin: 0 0 2rem 0; border-top: 1px solid #F1F5F9; padding-top: 1.5rem; flex-grow: 1; }
+    .price-card.popular .price-features { border-top-color: rgba(0,0,0,0.05); }
+    
+    .price-features li { gap: 10px; margin-bottom: 0.85rem; font-size: 0.85rem; }
+
+    .price-btn {
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+    .price-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 15px rgba(0,0,0,0.08); }
+    .price-btn.navy { background: var(--itr-navy); color: #FFF; text-decoration: none; display: block; text-align: center; }
+    .price-btn.gold { background: var(--itr-gold); color: #000; text-decoration: none; display: block; text-align: center; }
+
+    /* Detail Grid Layout (Scaled & Beige Pivot) */
+    .itr-detail-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .itr-info-pane {
+      background: var(--itr-beige-gold);
+      color: var(--itr-navy);
+      border: 1px solid #E5E0D5;
+      border-radius: 20px;
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .itr-info-pane .overline { color: var(--itr-gold); font-weight: 700; margin-bottom: 0.5rem; display: block; font-size: 0.8rem; letter-spacing: 2px; }
+    .itr-info-pane h3 { color: var(--itr-navy); font-size: 1.45rem; margin-bottom: 0.75rem; font-family: 'Playfair Display', serif; }
+    .itr-info-pane p { color: var(--itr-muted); line-height: 1.6; margin-bottom: 1.5rem; font-size: 0.88rem; }
+    
+    .due-date-alert {
+      background: #FFFFFF;
+      border: 1px solid rgba(0,0,0,0.05);
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: var(--itr-navy);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .pricing-banner {
+      background: #FFFBF5;
+      border: 1px solid #F1ECE4;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .docs-category {
+      border-top: 1px solid #F1F5F9;
+      padding: 1.25rem 0;
+    }
+    .docs-category:first-of-type { border-top: none; padding-top: 0; }
+    .docs-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: var(--itr-muted);
+      margin-bottom: 1rem;
+    }
+
+    .doc-list { list-style: none; padding: 0; }
+    .doc-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--itr-text);
+    }
+    .doc-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px;
+      width: 6px; height: 6px;
+      background: var(--itr-gold);
+      border-radius: 50%;
+    }
+
+    .pricing-banner {
+      background: #FFFBF0;
+      border: 1px solid #FEF3C7;
+      padding: 1.25rem 1.5rem;
+      border-radius: 16px;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    @media (max-width: 992px) {
+      .itr-detail-grid { grid-template-columns: 1fr; }
+      .itr-hero { padding: 120px 0 80px; }
     }
 
     @keyframes slideUp { 
@@ -269,78 +554,107 @@
 <!-- HERO -->
 <section class="itr-hero">
   <div class="container">
-    <div class="grid-2" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 60px; align-items: center;">
-      <div class="hero-text reveal">
-        <span class="overline">Income Tax Compliance</span>
-        <h1>Accurate & Secure <span class="text-gold">ITR Filing</span> For Everyone.</h1>
-        <p class="section-subtitle" style="font-size: 1.15rem; margin-bottom: 2.5rem;">Expert CA-led filing in 48 hours. Maximize your refunds and stay 100% compliant with the latest AY 2025-26 tax regulations.</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; text-align: left;">
-          <div style="display: flex; align-items: center; gap: 10px; font-weight: 500;"><i class="fas fa-check-circle text-gold"></i> Fast CA Callback</div>
-          <div style="display: flex; align-items: center; gap: 10px; font-weight: 500;"><i class="fas fa-check-circle text-gold"></i> 100% Secure Process</div>
-          <div style="display: flex; align-items: center; gap: 10px; font-weight: 500;"><i class="fas fa-check-circle text-gold"></i> Maximum Tax Savings</div>
-          <div style="display: flex; align-items: center; gap: 10px; font-weight: 500;"><i class="fas fa-check-circle text-gold"></i> Zero Penalty Guarantee</div>
-        </div>
+    <div class="hero-text reveal">
+      <span class="overline">Income Tax Compliance</span>
+      <h1>Accurate & Secure <span class="text-gold">ITR Filing</span> For Everyone.</h1>
+      <p class="section-subtitle">Expert CA-led filing in 48 hours. Maximize your refunds and stay 100% compliant with the latest AY 2025-26 tax regulations.</p>
+      
+      <div class="hero-features">
+        <div class="hero-feature-item"><i class="fas fa-check-circle text-gold"></i> Fast CA Callback</div>
+        <div class="hero-feature-item"><i class="fas fa-check-circle text-gold"></i> 100% Secure Process</div>
+        <div class="hero-feature-item"><i class="fas fa-check-circle text-gold"></i> Maximum Tax Savings</div>
+        <div class="hero-feature-item"><i class="fas fa-check-circle text-gold"></i> Zero Penalty Guarantee</div>
       </div>
-      <div class="hero-form reveal reveal-delay-1">
-        <div class="itr-lead-card">
-          <h3>Claim Free Consultation</h3>
-          <p>File your taxes starting at just ₹499.</p>
-          <form id="itrFinalLeadForm">
-            <div class="itr-form-group"><input type="text" placeholder="Full Name *" required></div>
-            <div class="itr-form-group"><input type="tel" placeholder="Mobile Number *" required></div>
-            <div class="itr-form-group">
-              <select required>
-                <option value="" disabled selected>Filing Category</option>
-                <option>Salaried Individual</option>
-                <option>Business Owner / Pro</option>
-                <option>Company / LLP</option>
-                <option>Trust / NGO</option>
-              </select>
-            </div>
-            <button type="submit" class="btn-shine" style="width: 100%; padding: 1.1rem; background: var(--itr-gold); border: none; border-radius: 12px; font-weight: 800; cursor: pointer; color: black; box-shadow: 0 10px 20px rgba(245,158,11,0.25);">🚀 File My ITR Now →</button>
-          </form>
-        </div>
+
+      <div class="itr-lead-card reveal-delay-1">
+        <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 0.5rem;">Claim Free Consultation</h3>
+        <p style="color: var(--itr-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">File your taxes starting at just ₹499.</p>
+        <form id="itrFinalLeadForm">
+          <div class="itr-form-group" style="margin-bottom:1.25rem">
+            <input type="text" placeholder="Full Name *" required style="width:100%; padding:1rem; border-radius:12px; border:1px solid var(--itr-border); background:#F1F5F9;">
+          </div>
+          <div class="itr-form-group" style="margin-bottom:1.25rem">
+            <input type="tel" placeholder="Mobile Number *" required style="width:100%; padding:1rem; border-radius:12px; border:1px solid var(--itr-border); background:#F1F5F9;">
+          </div>
+          <button type="submit" class="btn-shine" style="width: 100%; padding: 1.1rem; background: var(--itr-gold); border: none; border-radius: 12px; font-weight: 800; cursor: pointer; color: black; box-shadow: 0 10px 20px rgba(245,158,11,0.25);">🚀 File My ITR Now →</button>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
 <!-- MANDATORY GRID -->
-<section class="itr-section">
+<section class="itr-section" style="background: #FFFFFF;">
   <div class="container">
     <div class="section-heading text-center reveal">
-      <span class="overline">Compliance Check</span>
-      <h2 class="section-title">ITR is Mandatory For...</h2>
-      <p class="section-subtitle">Understanding your filing obligations helps you avoid severe late-payment penalties.</p>
+      <span class="overline" style="color: var(--itr-gold); font-weight: 700; display: block; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">— WHO MUST FILE —</span>
+      <h2 style="font-size: 2.5rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Income Tax Return is Mandatory For...</h2>
+      <p style="color: var(--itr-muted); max-width: 800px; margin: 0 auto; line-height: 1.6;">Whether you're a salaried employee, a business owner, or a company — if your income crosses the threshold, filing ITR is legally required. Here's who we serve:</p>
     </div>
-    <div class="grid-itr animate-stagger" style="margin-top: 4rem;">
-      <div class="card tilt-card reveal reveal-delay-1">
-        <div class="card-body">
-          <div class="itr-card-icon"><i class="fas fa-user-check"></i></div>
-          <h3 class="font-heading" style="font-size: 1.15rem; margin-bottom: 0.75rem;">Employees</h3>
-          <p class="card-text">Mandatory for resident individuals earning above ₹2.5L-₹5L (based on age).</p>
-        </div>
+
+    <div class="mandatory-grid animate-stagger" style="margin-top: 4rem;">
+      <!-- Card 1: Salaried -->
+      <div class="mandatory-card reveal">
+        <div class="m-icon" style="background: #F0F9FF; color: #0EA5E9;"><i class="fas fa-user-tie"></i></div>
+        <h3>Salaried Employees</h3>
+        <p>Income from salary, one house property, interest income. Income above ₹2.5L (basic) or ₹5L (old regime) threshold mandates filing.</p>
+        <span class="itr-tag">ITR-1 / ITR-2</span>
       </div>
-      <div class="card tilt-card reveal reveal-delay-2">
-        <div class="card-body">
-          <div class="itr-card-icon"><i class="fas fa-briefcase"></i></div>
-          <h3 class="font-heading" style="font-size: 1.15rem; margin-bottom: 0.75rem;">Businesses</h3>
-          <p class="card-text">Proprietors, partners, and corporations must file regardless of profit or loss.</p>
-        </div>
+
+      <!-- Card 2: Business Owners -->
+      <div class="mandatory-card reveal">
+        <div class="m-icon" style="background: #FFF7ED; color: #F97316;"><i class="fas fa-store"></i></div>
+        <h3>Business Owners & Traders</h3>
+        <p>Proprietors, traders, shopkeepers. If turnover exceeds ₹1 crore (business) or ₹50L (profession), audit is mandatory.</p>
+        <span class="itr-tag">ITR-3 / ITR-4</span>
       </div>
-      <div class="card tilt-card reveal reveal-delay-3">
-        <div class="card-body">
-          <div class="itr-card-icon"><i class="fas fa-university"></i></div>
-          <h3 class="font-heading" style="font-size: 1.15rem; margin-bottom: 0.75rem;">Investors</h3>
-          <p class="card-text">Crucial for those earning from stocks, mutual funds, or real estate capital gains.</p>
-        </div>
+
+      <!-- Card 3: Freelancers -->
+      <div class="mandatory-card reveal">
+        <div class="m-icon" style="background: #EEF2FF; color: #6366F1;"><i class="fas fa-laptop-code"></i></div>
+        <h3>Freelancers & Consultants</h3>
+        <p>Doctors, lawyers, architects, IT professionals, designers — professional income requires ITR-3. Deduct business expenses legally.</p>
+        <span class="itr-tag">ITR-3 / ITR-4</span>
       </div>
-      <div class="card tilt-card reveal reveal-delay-4">
-        <div class="card-body">
-          <div class="itr-card-icon"><i class="fas fa-globe"></i></div>
-          <h3 class="font-heading" style="font-size: 1.15rem; margin-bottom: 0.75rem;">NRIs & Global</h3>
-          <p class="card-text">Individuals with foreign assets or income earned in India above thresholds.</p>
-        </div>
+
+      <!-- Card 4: Pvt Ltd Companies -->
+      <div class="mandatory-card reveal">
+        <div class="m-icon" style="background: #F8FAFC; color: #475569;"><i class="fas fa-city"></i></div>
+        <h3>Private Limited Companies</h3>
+        <p>All registered Pvt Ltd and Public companies must file ITR-6 mandatorily, regardless of profit or loss. Tax audit under 44AB required.</p>
+        <span class="itr-tag">ITR-6</span>
+      </div>
+
+      <!-- Card 5: Partnership Firms -->
+      <div class="mandatory-card reveal">
+        <div class="m-icon" style="background: #F0FDF4; color: #22C55E;"><i class="fas fa-handshake"></i></div>
+        <h3>Partnership Firms & LLPs</h3>
+        <p>All Partnership firms and LLPs must file ITR-5. Profit sharing among partners and capital accounts must be reported accurately.</p>
+        <span class="itr-tag">ITR-5</span>
+      </div>
+
+      <!-- Card 6: Investors & HNIs -->
+      <div class="mandatory-card reveal">
+        <div class="m-icon" style="background: #FFFBEB; color: #D97706;"><i class="fas fa-chart-line"></i></div>
+        <h3>Investors & HNIs</h3>
+        <p>Income from mutual funds, stocks, real estate capital gains, FDs — all must be declared. Claim LTCG exemptions and set off losses.</p>
+        <span class="itr-tag">ITR-2 / ITR-3</span>
+      </div>
+
+      <!-- Card 7: NRIs -->
+      <div class="mandatory-card reveal">
+        <div class="m-icon" style="background: #EFF6FF; color: #2563EB;"><i class="fas fa-globe-asia"></i></div>
+        <h3>NRIs with India Income</h3>
+        <p>NRIs with rental income, dividends, or capital gains from India must file. DTAA benefits available to avoid double taxation.</p>
+        <span class="itr-tag">ITR-2</span>
+      </div>
+
+      <!-- Card 8: Trusts & NGOs -->
+      <div class="mandatory-card reveal">
+        <div class="m-icon" style="background: #FDF2F8; color: #DB2777;"><i class="fas fa-landmark"></i></div>
+        <h3>Trusts & NGOs</h3>
+        <p>Charitable trusts, educational institutions, religious bodies registered under 12A/80G must file ITR-7 for continued tax exemption.</p>
+        <span class="itr-tag">ITR-7</span>
       </div>
     </div>
   </div>
@@ -350,54 +664,510 @@
 <section class="itr-section" style="background: var(--itr-grey-bg);">
   <div class="container">
     <div class="section-heading text-center reveal">
-      <h2 class="section-title">Compare ITR Forms</h2>
-      <p class="section-subtitle">We handle the entire ITR portfolio with 100% accuracy.</p>
+      <h2 class="section-title">ITR Form Library</h2>
+      <p class="section-subtitle">Select your ITR type to see exactly who should file it, and the complete list of documents you’ll need to submit.</p>
     </div>
 
     <div class="itr-tabs-header reveal" style="margin-top: 3rem;">
-      <button class="tab-btn active" onclick="tabShow(event, 'itr1')">ITR-1 (Sahaj)</button>
+      <button class="tab-btn active" onclick="tabShow(event, 'itr1')">ITR-1 Sahaj</button>
       <button class="tab-btn" onclick="tabShow(event, 'itr2')">ITR-2</button>
-      <button class="tab-btn" onclick="tabShow(event, 'itr34')">ITR-3 & 4</button>
-      <button class="tab-btn" onclick="tabShow(event, 'itr567')">Corporate/Trust</button>
+      <button class="tab-btn" onclick="tabShow(event, 'itr3')">ITR-3</button>
+      <button class="tab-btn" onclick="tabShow(event, 'itr4')">ITR-4 Sugam</button>
+      <button class="tab-btn" onclick="tabShow(event, 'itr5')">ITR-5</button>
+      <button class="tab-btn" onclick="tabShow(event, 'itr6')">ITR-6</button>
+      <button class="tab-btn" onclick="tabShow(event, 'itr7')">ITR-7</button>
     </div>
 
+    <!-- ITR-1 -->
     <div id="itr1" class="tab-pane active reveal">
-      <div class="itr-detail-card">
-        <div>
-          <h3>ITR-1 (SAHAJ)</h3>
-          <p>The standard form for resident individuals earning from salary, one house property, and interest income up to ₹50 Lakhs.</p>
-          <ul class="flip-list">
-            <li>Form 16 Expert Reconciliation</li>
-            <li>Claim All Chapter VI-A Deductions</li>
-            <li>Instant E-verification Support</li>
+      <div class="itr-detail-grid">
+        <div class="itr-info-pane">
+          <span class="overline" style="margin-bottom: 0.5rem; font-size: 0.8rem; letter-spacing: 2px;">ITR FORM 1 — SAHAJ</span>
+          <h3>Salaried Individuals</h3>
+          <p>The simplest ITR form. Designed for resident individuals with straightforward income sources — salary, one house property, and small interest income.</p>
+          <ul class="doc-list">
+            <li>Salaried employees with Form 16</li>
+            <li>Pensioners with pension income</li>
+            <li>Total income up to ₹50 lakhs only</li>
+            <li>Interest income from savings/FDs included</li>
+            <li>NOT for: business income, capital gains, foreign assets</li>
           </ul>
+          <div class="due-date-alert">
+            <i class="far fa-calendar-alt" style="color: var(--itr-gold); font-size: 1.2rem;"></i>
+            <span>Due Date: <strong>31st July 2025</strong> (AY 2025-26)</span>
+          </div>
         </div>
-        <div style="background: #F1F5F9; padding: 2rem; border-radius: 20px;">
-          <h4 style="margin-bottom: 1rem; color: var(--itr-gold);">Documentation</h4>
-          <p style="font-size: 0.9rem; color: var(--itr-muted);">PAN, Aadhar, Form 16, and Bank Interest statements are all we need to start.</p>
-        </div>
-      </div>
-    </div>
-    
-    <div id="itr2" class="tab-pane reveal">
-      <div class="itr-detail-card">
-        <div>
-          <h3>ITR-2 (Investor Grade)</h3>
-          <p>For individuals and HUFs earning from stocks, mutual funds, or foreign assets.</p>
-          <ul class="flip-list">
-            <li>LTCG / STCG Calculations</li>
-            <li>Loss Set-off & Carry Forward</li>
-            <li>Foreign Income Reporting</li>
-          </ul>
-        </div>
-        <div style="background: #F1F5F9; padding: 2rem; border-radius: 20px;">
-          <h4 style="margin-bottom: 1rem; color: var(--itr-gold);">Documentation</h4>
-          <p style="font-size: 0.9rem; color: var(--itr-muted);">Broker Capital Gain statements and Property Sale Deeds.</p>
+        <div class="itr-docs-pane">
+          <h4 style="margin-bottom: 0.25rem;">Documents Required</h4>
+          <p style="font-size: 0.85rem; color: var(--itr-muted); margin-bottom: 1.5rem;">Keep these ready before we start — filing takes less than 2 hours once documents are in hand.</p>
+          
+          <div class="docs-category">
+            <div class="docs-label">IDENTITY & BASIC</div>
+            <ul class="doc-list">
+              <li>PAN Card</li>
+              <li>Aadhar Card (linked with PAN)</li>
+              <li>Bank account details (IFSC, account number)</li>
+            </ul>
+          </div>
+          <div class="docs-category">
+            <div class="docs-label">INCOME PROOF</div>
+            <ul class="doc-list">
+              <li>Form 16 Part A & Part B (from employer)</li>
+              <li>Salary slips for all months</li>
+              <li>Bank statements (all accounts)</li>
+              <li>Form 26AS / AIS from Income Tax portal</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-banner">
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 600;">File ITR-1 with us</div>
+              <div style="font-size: 0.75rem; color: var(--itr-muted);">Starting <span class="text-gold" style="font-weight: 700;">₹499</span> only</div>
+            </div>
+            <a href="../contact.html" class="tab-btn active" style="padding: 0.5rem 1rem;">File Now →</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Additional Tab Panes (ITR-3/4, Corporate) omitted for brevity as they follow same pattern -->
+    <!-- ITR-2 -->
+    <div id="itr2" class="tab-pane reveal">
+      <div class="itr-detail-grid">
+        <div class="itr-info-pane">
+          <span class="overline" style="margin-bottom: 0.5rem; font-size: 0.8rem; letter-spacing: 2px;">ITR FORM 2</span>
+          <h3>Salary + Capital Gains</h3>
+          <p>For individuals and HUFs with income from salary, multiple house properties, capital gains (stocks, mutual funds, real estate), and foreign income or assets.</p>
+          <ul class="doc-list">
+            <li>Salaried individuals with capital gains</li>
+            <li>Investors — stocks, MF, real estate profits</li>
+            <li>NRIs with India-sourced income</li>
+            <li>Individuals with foreign assets / income</li>
+            <li>Income above ₹50 lakhs</li>
+            <li>NOT for: business/professional income</li>
+          </ul>
+          <div class="due-date-alert">
+            <i class="far fa-calendar-alt" style="color: var(--itr-gold); font-size: 1.2rem;"></i>
+            <span>Due Date: <strong>31st July 2025</strong> (AY 2025-26)</span>
+          </div>
+        </div>
+        <div class="itr-docs-pane">
+          <h4 style="margin-bottom: 0.25rem;">Documents Required</h4>
+          <p style="font-size: 0.85rem; color: var(--itr-muted); margin-bottom: 1.5rem;">Capital gains filing requires broker statements and property documents — we walk you through each step.</p>
+          
+          <div class="docs-category">
+            <div class="docs-label">ALL ITR-1 DOCUMENTS, PLUS:</div>
+            <ul class="doc-list">
+              <li>Capital gains statement from broker (Zerodha / Upstox)</li>
+              <li>Mutual fund statement (CAMS / Kfintech)</li>
+              <li>Property sale deed / purchase agreement</li>
+              <li>Stamp duty valuation report</li>
+            </ul>
+          </div>
+          <div class="docs-category">
+            <div class="docs-label">FOR NRIS / FOREIGN INCOME</div>
+            <ul class="doc-list">
+              <li>Foreign bank account details (FATCA)</li>
+              <li>DTAA country-specific forms</li>
+              <li>Foreign assets schedule details</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-banner">
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 600;">File ITR-2 with us</div>
+              <div style="font-size: 0.75rem; color: var(--itr-muted);">Starting <span class="text-gold" style="font-weight: 700;">₹1,499</span> only</div>
+            </div>
+            <a href="../contact.html" class="tab-btn active" style="padding: 0.5rem 1rem;">File Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITR-3 -->
+    <div id="itr3" class="tab-pane reveal">
+      <div class="itr-detail-grid">
+        <div class="itr-info-pane">
+          <span class="overline" style="margin-bottom: 0.5rem; font-size: 0.8rem; letter-spacing: 2px;">ITR FORM 3</span>
+          <h3>Business / Professionals</h3>
+          <p>The most comprehensive individual ITR form. Our experts handle the entire books-of-accounts reconciliation for you.</p>
+          <ul class="doc-list">
+            <li>Doctors, Lawyers, Architects, CAs (own practice)</li>
+            <li>Freelancers with professional income</li>
+            <li>Business owners not covered under 44AD/ADA</li>
+            <li>Traders with F&O / speculative income</li>
+            <li>Also includes salary, capital gains, house property</li>
+          </ul>
+          <div class="due-date-alert">
+            <i class="far fa-calendar-alt" style="color: var(--itr-gold); font-size: 1.2rem;"></i>
+            <span>Due Date: <strong>31st July 2025</strong> (Non-audit) | <strong>31st Oct 2025</strong> (Audit)</span>
+          </div>
+        </div>
+        <div class="itr-docs-pane">
+          <h4 style="margin-bottom: 0.25rem;">Documents Required</h4>
+          <p style="font-size: 0.85rem; color: var(--itr-muted); margin-bottom: 1.5rem;">Business income filing requires precise data — we help categorize your expenses for max savings.</p>
+          
+          <div class="docs-category">
+            <div class="docs-label">BUSINESS / PROFESSIONAL RECORDS</div>
+            <ul class="doc-list">
+              <li>Profit & Loss Account for FY 2024-25</li>
+              <li>Balance Sheet as on 31st March 2025</li>
+              <li>GST returns (GSTR-3B, GSTR-1) if registered</li>
+              <li>TDS certificates received (Form 16A)</li>
+            </ul>
+          </div>
+          <div class="docs-category">
+            <div class="docs-label">AUDIT DOCUMENTS (IF APPLICABLE)</div>
+            <ul class="doc-list">
+              <li>Tax Audit Report — Form 3CA/3CB+3CD</li>
+              <li>Auditor's certificate</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-banner">
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 600;">File ITR-3 with us</div>
+              <div style="font-size: 0.75rem; color: var(--itr-muted);">Starting <span class="text-gold" style="font-weight: 700;">₹2,999</span> only</div>
+            </div>
+            <a href="../contact.html" class="tab-btn active" style="padding: 0.5rem 1rem;">File Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITR-4 -->
+    <div id="itr4" class="tab-pane reveal">
+      <div class="itr-detail-grid">
+        <div class="itr-info-pane">
+          <span class="overline" style="margin-bottom: 0.5rem; font-size: 0.8rem; letter-spacing: 2px;">ITR FORM 4 — SUGAM</span>
+          <h3>Small Business (Presumptive)</h3>
+          <p>The easiest business ITR. For small businesses, traders, and professionals who opt for presumptive taxation — no detailed books needed.</p>
+          <ul class="doc-list">
+            <li>Small shopkeepers, kirana store owners</li>
+            <li>Small contractors and sub-contractors (44AE)</li>
+            <li>Professionals with turnover ≤ ₹75L (44ADA)</li>
+            <li>Business with turnover ≤ ₹3 crore (44AD)</li>
+            <li>NOT for: Companies, LLPs, firms</li>
+          </ul>
+          <div class="due-date-alert">
+            <i class="far fa-calendar-alt" style="color: var(--itr-gold); font-size: 1.2rem;"></i>
+            <span>Due Date: <strong>31st July 2025</strong> (AY 2025-26)</span>
+          </div>
+        </div>
+        <div class="itr-docs-pane">
+          <h4 style="margin-bottom: 0.25rem;">Documents Required</h4>
+          <p style="font-size: 0.85rem; color: var(--itr-muted); margin-bottom: 1.5rem;">Presumptive taxation means no detailed books — just basic income and bank records.</p>
+          
+          <div class="docs-category">
+            <div class="docs-label">BASIC IDENTITY</div>
+            <ul class="doc-list">
+              <li>PAN Card and Aadhar Card</li>
+              <li>Bank account details (all used for business)</li>
+            </ul>
+          </div>
+          <div class="docs-category">
+            <div class="docs-label">INCOME DETAILS</div>
+            <ul class="doc-list">
+              <li>Total turnover / gross receipts for FY 2024-25</li>
+              <li>Bank statements (business + personal)</li>
+              <li>GST registration certificate (if registered)</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-banner">
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 600;">File ITR-4 with us</div>
+              <div style="font-size: 0.75rem; color: var(--itr-muted);">Starting <span class="text-gold" style="font-weight: 700;">₹1,499</span> only</div>
+            </div>
+            <a href="../contact.html" class="tab-btn active" style="padding: 0.5rem 1rem;">File Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITR-5 -->
+    <div id="itr5" class="tab-pane reveal">
+      <div class="itr-detail-grid">
+        <div class="itr-info-pane">
+          <span class="overline" style="margin-bottom: 0.5rem; font-size: 0.8rem; letter-spacing: 2px;">ITR FORM 5</span>
+          <h3>Firms, LLPs & AOPs</h3>
+          <p>Partnership and LLP filings are complex — we handle partner capital accounts, profit allocation, and complete audit coordination.</p>
+          <ul class="doc-list">
+            <li>Partnership firms (registered or unregistered)</li>
+            <li>Limited Liability Partnerships (LLPs)</li>
+            <li>Association of Persons (AOPs)</li>
+            <li>Body of Individuals (BOIs)</li>
+            <li>Cooperative societies, local authorities</li>
+          </ul>
+          <div class="due-date-alert">
+            <i class="far fa-calendar-alt" style="color: var(--itr-gold); font-size: 1.2rem;"></i>
+            <span>Due Date: <strong>31st July 2025</strong> (Non-audit) | <strong>31st Oct 2025</strong> (Audit)</span>
+          </div>
+        </div>
+        <div class="itr-docs-pane">
+          <h4 style="margin-bottom: 0.25rem;">Documents Required</h4>
+          <p style="font-size: 0.85rem; color: var(--itr-muted); margin-bottom: 1.5rem;">Entity filings require professional oversight — we ensure every ledger matches your bank feeds.</p>
+          
+          <div class="docs-category">
+            <div class="docs-label">ENTITY DOCUMENTS</div>
+            <ul class="doc-list">
+              <li>Partnership Deed / LLP Agreement</li>
+              <li>PAN of firm/LLP</li>
+              <li>List of all partners with PAN + profit sharing ratio</li>
+              <li>LLP registration certificate (for LLPs)</li>
+            </ul>
+          </div>
+          <div class="docs-category">
+            <div class="docs-label">FINANCIAL RECORDS</div>
+            <ul class="doc-list">
+              <li>Profit & Loss Account for FY 2024-25</li>
+              <li>Balance Sheet as on 31st March 2025</li>
+              <li>Capital accounts of all partners</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-banner">
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 600;">File ITR-5 with us</div>
+              <div style="font-size: 0.75rem; color: var(--itr-muted);">Starting <span class="text-gold" style="font-weight: 700;">₹3,999</span> only</div>
+            </div>
+            <a href="../contact.html" class="tab-btn active" style="padding: 0.5rem 1rem;">File Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITR-6 -->
+    <div id="itr6" class="tab-pane reveal">
+      <div class="itr-detail-grid">
+        <div class="itr-info-pane">
+          <span class="overline" style="margin-bottom: 0.5rem; font-size: 0.8rem; letter-spacing: 2px;">ITR FORM 6</span>
+          <h3>Corporate / Company</h3>
+          <p>Comprehensive tax reporting for all companies registered in India (Pvt Ltd, Public Ltd, OPC) that do not claim exemption under Section 11.</p>
+          <ul class="doc-list">
+            <li>Private & Public Limited Companies</li>
+            <li>One Person Companies (OPC)</li>
+            <li>Companies with business income or capital gains</li>
+            <li>Companies with foreign assets or income</li>
+          </ul>
+          <div class="due-date-alert">
+            <i class="far fa-calendar-alt" style="color: var(--itr-gold); font-size: 1.2rem;"></i>
+            <span>Due Date: <strong>31st Oct 2025</strong> (Mandatory Audit)</span>
+          </div>
+        </div>
+        <div class="itr-docs-pane">
+          <h4 style="margin-bottom: 0.25rem;">Documents Required</h4>
+          <p style="font-size: 0.85rem; color: var(--itr-muted); margin-bottom: 1.5rem;">Corporate filing is highly technical — we ensure alignment between ROC, GST, and Income Tax.</p>
+          
+          <div class="docs-category">
+            <div class="docs-label">AUDITED RECORDS</div>
+            <ul class="doc-list">
+              <li>Audited Financial Statements (P&L, Bal Sheet)</li>
+              <li>Tax Audit Report (Form 3CA/3CB-3CD)</li>
+              <li>MAT (Minimum Alternate Tax) calculations</li>
+              <li>Transfer Pricing report (if applicable)</li>
+            </ul>
+          </div>
+          <div class="docs-category">
+            <div class="docs-label">COMPLIANCE ATTACHMENTS</div>
+            <ul class="doc-list">
+              <li>ROC Filings (AOC-4, MGT-7)</li>
+              <li>Digital Signature (DSC) of Director</li>
+              <li>Details of Directors and Shareholding pattern</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-banner">
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 600;">File ITR-6 with us</div>
+              <div style="font-size: 0.75rem; color: var(--itr-muted);">Starting <span class="text-gold" style="font-weight: 700;">₹5,999</span> only</div>
+            </div>
+            <a href="../contact.html" class="tab-btn active" style="padding: 0.5rem 1rem;">File Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITR-7 -->
+    <div id="itr7" class="tab-pane reveal">
+      <div class="itr-detail-grid">
+        <div class="itr-info-pane">
+          <span class="overline" style="margin-bottom: 0.5rem; font-size: 0.8rem; letter-spacing: 2px;">ITR FORM 7</span>
+          <h3>Trusts / NGOs / Political Parties</h3>
+          <p>Specialized filing for charitable trusts, religious institutions, political parties, and educational or medical associations.</p>
+          <ul class="doc-list">
+            <li>Charitable / Religious Trusts</li>
+            <li>NGOs with 12A/80G status</li>
+            <li>Scientific Research Associations</li>
+            <li>Educational and Medical Institutions</li>
+            <li>Political Parties & News Agencies</li>
+          </ul>
+          <div class="due-date-alert">
+            <i class="far fa-calendar-alt" style="color: var(--itr-gold); font-size: 1.2rem;"></i>
+            <span>Due Date: <strong>31st Oct 2025</strong> (Audit Mandatory)</span>
+          </div>
+        </div>
+        <div class="itr-docs-pane">
+          <h4 style="margin-bottom: 0.25rem;">Documents Required</h4>
+          <p style="font-size: 0.85rem; color: var(--itr-muted); margin-bottom: 1.5rem;">Trust filing requires strict adherence to exemption rules — we help you maintain your tax-free status.</p>
+          
+          <div class="docs-category">
+            <div class="docs-label">EXEMPTION RECORDS</div>
+            <ul class="doc-list">
+              <li>Registration Certificate (12A, 80G)</li>
+              <li>Trust Deed / Bylaws / Constitution docs</li>
+              <li>Audit reports specific to Trusts (Form 10B/10BB)</li>
+              <li>Details of accumulation of funds (Form 10)</li>
+            </ul>
+          </div>
+          <div class="docs-category">
+            <div class="docs-label">ACTIVITY & FINANCIALS</div>
+            <ul class="doc-list">
+              <li>FCRA registration details (if applicable)</li>
+              <li>Audited Financial Statements</li>
+              <li>List of donors and contribution details</li>
+            </ul>
+          </div>
+          
+          <div class="pricing-banner">
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 600;">File ITR-7 with us</div>
+              <div style="font-size: 0.75rem; color: var(--itr-muted);">Starting <span class="text-gold" style="font-weight: 700;">₹4,999</span> only</div>
+            </div>
+            <a href="../contact.html" class="tab-btn active" style="padding: 0.5rem 1rem;">File Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+  </div>
+</section>
+
+<!-- DEADLINES -->
+<section class="itr-section" style="background: #FFFFFF;">
+  <div class="container">
+    <div class="section-heading text-center reveal">
+      <span class="overline" style="color: var(--itr-gold); font-weight: 700; display: block; margin-bottom: 0.5rem;">— KEY DATES AY 2025-26 —</span>
+      <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">ITR Filing Deadlines You Must Know</h2>
+      <p style="color: var(--itr-muted); max-width: 600px; margin: 0 auto;">Mark these dates on your calendar. Filing even one day late triggers penalties. We'll remind you — and file before the deadline.</p>
+    </div>
+
+    <div class="deadline-grid reveal">
+      <div class="deadline-card red">
+        <div class="deadline-month">JULY 2025</div>
+        <div class="deadline-day">31</div>
+        <div class="deadline-title">ITR Due Date — Individuals & Firms (Non-Audit)</div>
+        <p class="deadline-desc">ITR-1, ITR-2, ITR-3, ITR-4, ITR-5</p>
+        <span class="deadline-tag red">Critical Deadline</span>
+      </div>
+
+      <div class="deadline-card red">
+        <div class="deadline-month">SEPTEMBER 2025</div>
+        <div class="deadline-day">30</div>
+        <div class="deadline-title">Tax Audit Report Submission</div>
+        <p class="deadline-desc">Form 3CA/3CB + 3CD filing deadline</p>
+        <span class="deadline-tag gold">Audit Cases</span>
+      </div>
+
+      <div class="deadline-card navy">
+        <div class="deadline-month">OCTOBER 2025</div>
+        <div class="deadline-day">31</div>
+        <div class="deadline-title">Companies & Audit Cases ITR</div>
+        <p class="deadline-desc">ITR-5, ITR-6, ITR-7 (audit required)</p>
+        <span class="deadline-tag gold">Companies & Firms</span>
+      </div>
+
+      <div class="deadline-card navy">
+        <div class="deadline-month">DECEMBER 2025</div>
+        <div class="deadline-day">31</div>
+        <div class="deadline-title">Revised / Belated ITR Last Date</div>
+        <p class="deadline-desc">All ITR forms — last chance to file or revise</p>
+        <span class="deadline-tag gold">Final Deadline</span>
+      </div>
+
+      <div class="deadline-card green">
+        <div class="deadline-month">MARCH 2026</div>
+        <div class="deadline-day">15</div>
+        <div class="deadline-title">4th Installment Advance Tax</div>
+        <p class="deadline-desc">75% of total advance tax due by this date</p>
+        <span class="deadline-tag green">Advance Tax</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="itr-section" style="background: var(--itr-grey-bg);">
+  <div class="container">
+    <div class="section-heading text-center reveal">
+      <span class="overline" style="color: var(--itr-gold); font-weight: 700; display: block; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">— TRANSPARENT PRICING —</span>
+      <h2 style="font-size: 2.5rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Simple, Honest Pricing — No Hidden Charges</h2>
+      <p style="color: var(--itr-muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">All packages include expert CA filing, unlimited revisions before submission, ITR-V acknowledgement, and 1-year post-filing support for any IT notices.</p>
+    </div>
+
+    <div class="pricing-grid-itr reveal" style="margin-top: 4rem;">
+      <!-- Salaried Basic -->
+      <div class="price-card">
+        <div class="price-header">
+          <div class="price-cat">Salaried Basic</div>
+          <div class="price-sub">Salaried individuals — ITR-1</div>
+        </div>
+        <div class="price-value">₹499 <span style="font-size: 0.9rem; font-weight: 500; font-family: 'Outfit', sans-serif; color: var(--itr-muted);">/per return</span></div>
+        <ul class="price-features" style="list-style: none; padding: 0; margin: 0 0 2.5rem 0; border-top: 1px solid #F1F5F9; padding-top: 2rem;">
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> ITR-1 filing (salary + one house property)</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> Form 16 + 26AS reconciliation</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> All 80C, 80D deduction claims</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> HRA and home loan calculation</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> ITR-V acknowledgement delivered</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> Filing within 24 hours</li>
+        </ul>
+        <a href="../contact.html" class="price-btn navy" style="text-decoration: none; display: block;">Get Started →</a>
+      </div>
+
+      <!-- Business Pro -->
+      <div class="price-card popular">
+        <div class="popular-badge">
+          <i class="fas fa-star"></i> MOST POPULAR
+        </div>
+        <div class="price-header">
+          <div class="price-cat">Business Pro</div>
+          <div class="price-sub">Business owners, freelancers — ITR-3/4</div>
+        </div>
+        <div class="price-value">₹2,499 <span style="font-size: 0.9rem; font-weight: 500; font-family: 'Outfit', sans-serif; color: rgba(255,255,255,0.6);">/per return</span></div>
+        <ul class="price-features" style="list-style: none; padding: 0; margin: 0 0 2.5rem 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--itr-gold); font-size: 0.8rem; margin-top: 4px;"></i> ITR-3 or ITR-4 filing</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--itr-gold); font-size: 0.8rem; margin-top: 4px;"></i> P&L and balance sheet preparation</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--itr-gold); font-size: 0.8rem; margin-top: 4px;"></i> GST + TDS reconciliation</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--itr-gold); font-size: 0.8rem; margin-top: 4px;"></i> Capital gains calculation (stocks, MF, property)</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--itr-gold); font-size: 0.8rem; margin-top: 4px;"></i> Maximum deduction optimization</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--itr-gold); font-size: 0.8rem; margin-top: 4px;"></i> Notice handling support (1 year)</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: var(--itr-gold); font-size: 0.8rem; margin-top: 4px;"></i> Dedicated CA assigned</li>
+        </ul>
+        <a href="../contact.html" class="price-btn gold" style="text-decoration: none; display: block;">File Now — Most Popular →</a>
+      </div>
+
+      <!-- Company Filing -->
+      <div class="price-card">
+        <div class="price-header">
+          <div class="price-cat">Company Filing</div>
+          <div class="price-sub">Pvt Ltd, LLP, Partnership — ITR-5/6</div>
+        </div>
+        <div class="price-value">₹7,999 <span style="font-size: 0.9rem; font-weight: 500; font-family: 'Outfit', sans-serif; color: var(--itr-muted);">/per company</span></div>
+        <ul class="price-features" style="list-style: none; padding: 0; margin: 0 0 2.5rem 0; border-top: 1px solid #F1F5F9; padding-top: 2rem;">
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> ITR-5 or ITR-6 filing</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> Tax audit coordination (Form 3CA/3CD)</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> MAT computation (if applicable)</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> Director / partner-level reporting</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> GST + TDS annual reconciliation</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> ROC annual compliance bundled</li>
+          <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 0.9rem;"><i class="fas fa-check-circle" style="color: #10B981; font-size: 0.8rem; margin-top: 4px;"></i> 2-year post-filing notice support</li>
+        </ul>
+        <a href="../contact.html" class="price-btn navy" style="text-decoration: none; display: block;">Get Custom Quote →</a>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 3rem; font-size: 0.85rem; color: var(--itr-muted); font-style: italic;">* Pricing varies based on income complexity, number of sources, and audit requirements. Get an exact quote in 5 minutes — call or WhatsApp us.</p>
   </div>
 </section>
 
@@ -406,13 +1176,13 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a href="../index.html" class="nav-logo" style="margin-bottom: 1.5rem;">
-          <div class="nav-logo-icon">DN</div>
-          <div class="nav-logo-text">
-            <span class="nav-logo-name" style="color:white">Digital Next</span>
-            <span class="nav-logo-sub" style="color:rgba(255,255,255,0.6)">Consultancy</span>
+        <div class="nav-logo" style="margin-bottom: 1.5rem;">
+          <div class="nav-logo-icon" style="background: var(--itr-navy); color: #FFF;">DN</div>
+          <div class="nav-logo-text" style="display: block;">
+            <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.15rem;color:var(--itr-navy);line-height:1.2;">Digital Next</div>
+            <div style="font-family:'Outfit',sans-serif;font-weight:500;font-size:0.75rem;color:var(--itr-gold);text-transform:uppercase;letter-spacing:0.1em;">Consultancy Pvt. Ltd.</div>
           </div>
-        </a>
+        </div>
         <p class="footer-desc">Professional compliance partner. India's first CA + IT combined platform for holistic business growth.</p>
         <div class="footer-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
