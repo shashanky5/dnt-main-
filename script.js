@@ -101,16 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
     resize();
 
     const draw = () => {
-      if (!isDragging) rotY += 0.002;
+      if (!isDragging) {
+        rotY += 0.005; 
+        rotX += Math.sin(time * 0.5) * 0.0015; 
+      }
       time += 0.015;
       ctx.clearRect(0, 0, width, height);
 
-      // Glow
-      const glow = ctx.createRadialGradient(cx, cy, radius * 0.8, cx, cy, radius * 1.5);
-      glow.addColorStop(0, "rgba(255, 255, 255, 0.03)");
-      glow.addColorStop(1, "rgba(255, 255, 255, 0)");
-      ctx.fillStyle = glow;
-      ctx.fillRect(0, 0, width, height);
+      // NO GLOW OR LIGHT (Removing the radial gradient to fix "white light" issue)
 
       // Draw Dots
       dots.forEach(dot => {
@@ -119,10 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
         [x, y, z] = rotateY(x, y, z, rotY);
         if (z > 0) return;
         const [sx, sy] = project(x, y, z);
-        const alpha = Math.max(0.1, 1 - (z + radius) / (2 * radius));
+        const alpha = Math.max(0.12, 1 - (z + radius) / (2 * radius));
         ctx.beginPath();
-        ctx.arc(sx, sy, 1 + alpha * 0.8, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(180, 220, 255, ${(alpha * 0.6).toFixed(2)})`;
+        ctx.arc(sx, sy, 1.2 + alpha * 1.0, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(180, 240, 255, ${(alpha * 0.65).toFixed(2)})`;
         ctx.fill();
       });
 
@@ -132,25 +130,27 @@ document.addEventListener('DOMContentLoaded', () => {
         let [x2, y2, z2] = latLngToXYZ(conn.to[0], conn.to[1], radius);
         [x1, y1, z1] = rotateX(x1, y1, z1, rotX); [x1, y1, z1] = rotateY(x1, y1, z1, rotY);
         [x2, y2, z2] = rotateX(x2, y2, z2, rotX); [x2, y2, z2] = rotateY(x2, y2, z2, rotY);
-        if (z1 > radius * 0.3 && z2 > radius * 0.3) return;
+        if (z1 > radius * 0.35 && z2 > radius * 0.35) return;
         const [sx1, sy1] = project(x1, y1, z1);
         const [sx2, sy2] = project(x2, y2, z2);
         const [midX, midY, midZ] = [(x1+x2)/2, (y1+y2)/2, (z1+z2)/2];
         const midLen = Math.sqrt(midX*midX + midY*midY + midZ*midZ);
-        const [ex, ey, ez] = [(midX/midLen)*radius*1.25, (midY/midLen)*radius*1.25, (midZ/midLen)*radius*1.25];
+        const [ex, ey, ez] = [(midX/midLen)*radius*1.3, (midY/midLen)*radius*1.3, (midZ/midLen)*radius*1.3];
         const [scx, scy] = project(ex, ey, ez);
         ctx.beginPath();
         ctx.moveTo(sx1, sy1);
         ctx.quadraticCurveTo(scx, scy, sx2, sy2);
         ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
-        ctx.lineWidth = 1.2;
+        ctx.lineWidth = 1.3;
         ctx.stroke();
-        // Traveling Pulse
-        const t = (Math.sin(time * 1.5 + conn.from[0]) + 1) / 2;
+        // Traveling Pulse (Sharp)
+        const t = (Math.sin(time * 1.8 + conn.from[0]) + 1) / 2;
         const tx = (1-t)**2 * sx1 + 2*(1-t)*t*scx + t**2 * sx2;
         const ty = (1-t)**2 * sy1 + 2*(1-t)*t*scy + t**2 * sy2;
-        ctx.beginPath(); ctx.arc(tx, ty, 2, 0, Math.PI*2);
-        ctx.fillStyle = "rgba(255, 255, 255, 1)"; ctx.fill();
+        ctx.beginPath(); ctx.arc(tx, ty, 3, 0, Math.PI*2);
+        ctx.fillStyle = "rgba(234, 179, 8, 1)"; 
+        ctx.shadowBlur = 0; // Removing shadowBlur to fix "pixel light" issue
+        ctx.fill();
       });
 
       // Markers
@@ -159,14 +159,14 @@ document.addEventListener('DOMContentLoaded', () => {
         [x, y, z] = rotateX(x, y, z, rotX); [x, y, z] = rotateY(x, y, z, rotY);
         if (z > radius * 0.1) return;
         const [sx, sy] = project(x, y, z);
-        const pulse = Math.sin(time * 2 + m.lat) * 0.5 + 0.5;
-        ctx.beginPath(); ctx.arc(sx, sy, 4 + pulse * 4, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 + pulse * 0.2})`;
+        const pulse = Math.sin(time * 2.2 + m.lat) * 0.5 + 0.5;
+        ctx.beginPath(); ctx.arc(sx, sy, 4.5 + pulse * 4.5, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${0.25 + pulse * 0.25})`;
         ctx.stroke();
-        ctx.beginPath(); ctx.arc(sx, sy, 2.5, 0, Math.PI * 2);
+        ctx.beginPath(); ctx.arc(sx, sy, 3, 0, Math.PI * 2);
         ctx.fillStyle = "rgba(255, 255, 255, 1)"; ctx.fill();
-        ctx.font = "10px system-ui"; ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
-        ctx.fillText(m.label, sx + 8, sy + 3);
+        ctx.font = "600 11px 'Plus Jakarta Sans', system-ui"; ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+        ctx.fillText(m.label, sx + 10, sy + 4);
       });
 
       requestAnimationFrame(draw);
